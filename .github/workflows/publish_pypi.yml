@@ -25,5 +25,8 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: |
           pwd
+          version=$(git describe --tags --abbrev=0)
+          version=${version/v/}
+          sed -i 's/^\( \+version="\).\+\(".+$\)/\1'$version'\2/g' setup.py
           python setup.py sdist bdist_wheel
           twine upload dist/*
