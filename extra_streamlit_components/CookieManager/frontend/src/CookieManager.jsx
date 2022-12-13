@@ -11,12 +11,12 @@ let last_output = null
 const cookies = new Cookies()
 
 const CookieManager = (props: ComponentProps) => {
-  const setCookie = (cookie, value, expires_at) => {
-    cookies.set(cookie, value, {
-      path: "/",
-      samesite: "strict",
-      expires: new Date(expires_at),
-    })
+  const setCookie = (cookie, value, options) => {
+    const converted_options = {
+      expires: new Date(options.expires),
+    }
+    options = { ...options, ...converted_options }
+    cookies.set(cookie, value, options)
     return true
   }
 
