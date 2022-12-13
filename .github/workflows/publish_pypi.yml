@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       - name: Build Nodejs dependencies
         run: python build.py
       - name: Build and publish
