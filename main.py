@@ -133,12 +133,12 @@ def show_stepper_bar():
 
 
 if __name__ == "__main__":
-    show_router_controls()
-    st.write("_______")
+    # show_router_controls()
+    # st.write("_______")
     show_cookie_manager_controls()
-    st.write("_______")
-    show_top_bar()
-    st.write("_______")
-    show_bouncing_image()
-    st.write("_______")
-    show_stepper_bar()
+    # st.write("_______")
+    # show_top_bar()
+    # st.write("_______")
+    # show_bouncing_image()
+    # st.write("_______")
+    # show_stepper_bar()
