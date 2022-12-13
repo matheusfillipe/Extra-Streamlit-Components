@@ -23,7 +23,11 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache-dependency-path: |
+            extra_streamlit_components/BouncingImage/frontend/package-lock.json
+            extra_streamlit_components/CookieManager/frontend/package-lock.json
+            extra_streamlit_components/StepperBar/frontend/package-lock.json
+            extra_streamlit_components/TabBar/frontend/package-lock.json
       - name: Build Nodejs dependencies
         run: python build.py
       - name: Build and publish
