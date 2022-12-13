@@ -1,10 +1,8 @@
+import datetime
 import os
+from typing import Literal, Optional, Union
 
 import streamlit.components.v1 as components
-import datetime
-
-from typing import Optional, Union, Literal
-
 from extra_streamlit_components import IS_RELEASE
 
 if IS_RELEASE:
@@ -27,13 +25,12 @@ class CookieManager:
         self,
         cookie: str,
         val: Union[str, int, float, bool],
-        key: str="set",
+        key: str = "set",
         path: str = "/",
         expires_at: Optional[datetime.datetime] = None,
         max_age: Optional[float] = None,
         domain: Optional[str] = None,
         secure: Optional[bool] = None,
-        http_only: Optional[bool] = None,
         same_site: Union[bool, None, Literal["lax", "strict"]] = "strict",
     ):
         """Sets a cookie with the given name and value.
@@ -47,7 +44,6 @@ class CookieManager:
             max_age: Relative max age of the cookie from when the client receives it in seconds.
             domain: Domain for the cookie (sub.domain.com or .allsubdomains.com)
             secure: Is only accessible through HTTPS?
-            http_only: Is only the server can access the cookie?
             same_site: Strict or Lax enforcement.
         """
         if cookie is None or cookie == "":
@@ -63,12 +59,11 @@ class CookieManager:
             "maxAge": max_age,
             "domain": domain,
             "secure": secure,
-            "httpOnly": http_only,
             "sameSite": same_site,
         }
-        did_add = self.cookie_manager(
-            method="set", cookie=cookie, value=val, options=options, key=key, default=False
-        )
+        # Remove None's
+        options = {k: v for k, v in options.items() if v is not None}
+        did_add = self.cookie_manager(method="set", cookie=cookie, value=val, options=options, key=key, default=False)
         if did_add:
             self.cookies[cookie] = val
 
