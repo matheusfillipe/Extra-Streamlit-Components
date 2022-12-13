@@ -12,6 +12,7 @@ const cookies = new Cookies()
 
 const CookieManager = (props: ComponentProps) => {
   const setCookie = (cookie, value, options) => {
+    console.debug(options)
     const converted_options = {
       expires: new Date(options.expires),
     }
@@ -39,13 +40,13 @@ const CookieManager = (props: ComponentProps) => {
   const method = args["method"]
   const cookie = args["cookie"]
   const value = args["value"]
-  const expires_at = args["expires_at"]
+  const options = args["options"]
 
   let output = null
 
   switch (method) {
     case "set":
-      output = setCookie(cookie, value, expires_at)
+      output = setCookie(cookie, value, options)
       break
     case "get":
       output = getCookie(cookie)
