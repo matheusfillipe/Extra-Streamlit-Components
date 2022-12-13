@@ -67,7 +67,7 @@ class CookieManager:
             "sameSite": same_site,
         }
         did_add = self.cookie_manager(
-            method="set", cookie=cookie, value=val, key=key, options=options default=False
+            method="set", cookie=cookie, value=val, key=key, options=options, default=False
         )
         if did_add:
             self.cookies[cookie] = val
