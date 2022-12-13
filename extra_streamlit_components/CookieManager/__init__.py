@@ -33,7 +33,7 @@ class CookieManager:
         max_age: Optional[float] = None,
         domain: Optional[str] = None,
         secure: Optional[bool] = None,
-        http_only: Optional[bool] = True,
+        http_only: Optional[bool] = None,
         same_site: Union[bool, None, Literal["lax", "strict"]] = "strict",
     ):
         """Sets a cookie with the given name and value.
@@ -43,7 +43,7 @@ class CookieManager:
             val: The value of the cookie.
             key: The key to use for the component.
             path: Cookie path. Use '/' as the path if you want your cookie to be accessible on all pages.
-            expires_at: Absolute expiration date for the cookie. Defaults to 1 day.
+            expires_at: Absolute expiration date for the cookie. Defaults to 1 day from now.
             max_age: Relative max age of the cookie from when the client receives it in seconds.
             domain: Domain for the cookie (sub.domain.com or .allsubdomains.com)
             secure: Is only accessible through HTTPS?

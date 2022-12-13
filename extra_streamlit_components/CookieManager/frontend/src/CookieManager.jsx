@@ -12,7 +12,6 @@ const cookies = new Cookies()
 
 const CookieManager = (props: ComponentProps) => {
   const setCookie = (cookie, value, options) => {
-    console.debug(options)
     const converted_options = {
       expires: new Date(options.expires),
     }
