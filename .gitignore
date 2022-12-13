@@ -131,7 +131,7 @@ dmypy.json
 
 .idea
 .idea/
-package-lock.json
+# package-lock.json
 .prettierrc
 extra_streamlit_components/setup.*
 build_and_upload_to_twine*
